@@ -1,5 +1,4 @@
 const Provider = require('../models/Provider');
-const Product = require('../models/Product');
 
 exports.getProvider = async (req, res) => {
   try {
@@ -14,33 +13,8 @@ exports.getProvider = async (req, res) => {
   }
 };
 
-exports.getProviderProduct = async (req, res) => {
-    Provider.find()
-    .select("_id andress code")
-    .populate('products')
-    .exec()
-    .then(docs => {
-      res.status(200).json({
-        pedidos : docs.map(doc => {
-          return {
-            _id:doc._id,
-            andress:doc.andress,
-            code: doc.code,
-            products: doc.products,
-            
-          };
-        })
-      });
-    })
-    .catch(err => {
-      res.status(500).json({
-        error: err
-      });
-    });
-}
-//Codigo para traer el producto
 
-//
+
 exports.createProvider = async (req, res) => {
   try {
     const newProvider = new Provider({

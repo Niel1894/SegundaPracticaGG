@@ -27,12 +27,12 @@ const homeRoutes = require('./routes/home');
 const userRoutes = require('./routes/user');
 const productoRoutes = require('./routes/product');
 const providerRoutes = require('./routes/provider');
-//const ticketRoutes = require('./routes/ticket');
+const ticketRoutes = require('./routes/ticket');
 
 app.use('/', homeRoutes);
 app.use('/usuarios', userRoutes);
 app.use('/productos', productoRoutes);
 app.use('/provider', providerRoutes);
-//app.use('/ticket', ticketRoutes );
+app.use('/ticket', ticketRoutes );
 
 module.exports = app;

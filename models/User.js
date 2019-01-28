@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
   surnames: String,
   address: String,
   telephone: Number,
-}, { timestamps: true , type: Schema.ObjectId, ref: "User"});
+}, { timestamps: true });
 
 const User = mongoose.model('User', userSchema);
 

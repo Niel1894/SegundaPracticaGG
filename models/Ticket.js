@@ -1,22 +1,12 @@
-/*const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const relationship = require("mongoose-relationship");
+const ticketSchema= new mongoose.Schema({
+    _id: mongoose.Schema.Types.ObjectId,
+    cliente:{ type: Schema.Types.ObjectId , ref:'User'},
+    producto:{ type: Schema.Types.ObjectId , ref:'Product'},
+    amount: Number
+},{ timestamps: true});
 
-const userSchema =new mongoose.Schema({
-    ticket:[{ type:Schema.ObjectId, ref:"Ticket" }]
-});
-const User = mongoose.model("User", userSchema);
- module.exports = User;
-const productSchema = new mongoose.Schema({
-    ticket:[{ type:Schema.ObjectId, ref:"Ticket" }]
-});
-const Product = mongoose.model("Product", productSchema);
- module.exports=Product;
-const Ticket = new mongoose.Schema({
-    user: [{ type:Schema.ObjectId, ref:"User", childPath:"ticket" }],
-    product: [{ type:Schema.ObjectId, ref:"Product", childPath:"ticket" }]
-});
+const Ticket = mongoose.model('Ticket',ticketSchema);
 
-
-Ticket.plugin(relationship, { relationshipPathName:['user', 'product'] });
- */
+module.exports = Ticket;

@@ -7,7 +7,7 @@ const providerSchema= new mongoose.Schema({
     andress: String,
     province: String,
     telephone: Number,
-    products: [{type: Schema.Types.ObjectId, ref: 'Product', required:true}]
+    
 },{timestamps: true});
 
 const Provider = mongoose.model('Provider',providerSchema);
