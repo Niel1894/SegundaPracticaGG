@@ -40,3 +40,22 @@ exports.getTicket = async(req,res) => {
       return res.send(err);
     }
   };
+
+  exports.deleteTicket = async (req,res) =>{
+  try{
+     Ticket.deleteOne({_id: req.params.id}).then(() =>{
+       Ticket.findOne({_id: req.params.id}).then(()=>{
+        res.status(200).json({
+          message: "Ticket deleted",
+          request: {
+            type: "DELETE",
+            body: { _id: req.params.id, cliente:req.params.cliente ,producto : req.params.producto }
+          }
+        });
+      })
+     });
+  } catch (err){
+      return res.send(err);
+  }
+
+  }
