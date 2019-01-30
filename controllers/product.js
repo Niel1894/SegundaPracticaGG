@@ -34,7 +34,7 @@ exports.createProduct = async (req, res) => {
 exports.updateProduct = async (req, res) => {
   try {
       
-      Product.findByIdAndUpdate({_id:req.params.id}, {$set: req.body}).then(()=>{
+      Product.findByIdAndUpdate({_id:req.params.id}, {$set: req.body.stock}).then(()=>{
       Product.findOne({_id:req.params.id}).then((product)=>{
         res.send(product);
       })

@@ -34,3 +34,22 @@ exports.createStore = async (req,res) => {
         return res.send(err);
     }
 }
+
+exports.deleteStore = async (req,res) =>{
+    try{
+       Ticket.deleteOne({ quantity: { $gt: 0} }).then(() =>{
+         Ticket.findOne({_id: req.params.id}).then(()=>{
+          res.status(200).json({
+            message: "Ticket deleted",
+            request: {
+              type: "DELETE",
+              body: { codeStore : req.params.codeStore}
+            }
+          });
+        })
+       });
+    } catch (err){
+        return res.send(err);
+    }
+  
+    }
